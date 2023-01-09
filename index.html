@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="../dist/style.css" rel="stylesheet" />
+    <style>
+      body {
+        font-family: "Varela Round", sans-serif;
+      }
+      #hero-girl {
+        opacity: 1;
+        transition: all 1.5s ease-in-out;
+        transform: translateY(0);
+      }
+      #hero-man {
+        opacity: 1;
+        transition: all 1.5s ease-in-out;
+        transform: translateY(0);
+      }
+      .hero-human-show {
+        opacity: 0 !important;
+        transform: translateY(100%) !important;
+      }
+    </style>
+
+    <style>
+      .underline-style {
+        /*   background: red; */
+        position: relative;
+      }
+
+      .underline-style-overflow {
+        display: inline-block;
+        /* A little extra padding and overflow hidden   */
+        overflow: hidden;
+        padding-bottom: clamp(1rem, 2vmin, 2rem);
+      }
+      .underline-style-overflow:after {
+        content: "";
+        position: absolute;
+        top: 110%;
+        height: 280%;
+        aspect-ratio: 2.5 / 1;
+        left: 50%;
+        transform: translate(-50%, -10%);
+        border-radius: 50%;
+        border: 6px solid #fff;
+      }
+    </style>
+    <style>
+      /* mnue style  */
+      .header-links li span {
+        position: relative;
+        z-index: 0;
+      }
+
+      .header-links li span::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        bottom: 2px;
+        left: -4px;
+        right: -4px;
+        display: block;
+        height: 6px;
+      }
+
+      .header-links li.active span::before {
+        background-color: #fcae04;
+      }
+
+      .header-links li:not(.active):hover span::before {
+        background-color: #ccc;
+      }
+    </style>
+    <style>
+      /* nabar dropdown menu  */
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown .nav-link {
+        padding-right: 15px;
+        height: 17px;
+        line-height: 17px;
+      }
+
+      .submenu {
+        color: black !important;
+        padding: 24px;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        z-index: 100;
+        height: 400px;
+        margin-left: -100px;
+        background: rgba(255, 255, 255, 0.9);
+        min-width: max-content;
+        border-radius: 3px;
+        line-height: 1.46667;
+        margin-top: -5px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        -webkit-transform: translate(0, 0) scale(0.85);
+        transform: translate(0, 0) scale(0.85);
+        transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        pointer-events: none;
+      }
+      .submenu-services {
+        left: -100%;
+      }
+
+      .show-submenu .submenu {
+        opacity: 1;
+        -webkit-transform: translate(0, 25px) scale(1);
+        transform: translate(0, 25px) scale(1);
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+
+  <body class="overflow-x-hidden debug-screens">
+    <!-- navigation and hero section  -->
+    <header class="w-screen h-screen bg-black">
+      <!-- menu -->
+      <section
+        id="navbar"
+        class="navbar absolute top-0 left-0 z-50 w-full bg-white shadow-lg h-20 hidden lg:flex"
+      >
+        <!-- logo -->
+        <a
+          id="mashkraft-logo"
+          href=""
+          class="flex-shrink-0 flex items-center justify-center px-4 lg:px-6 xl:px-8"
+        >
+          <img class="" src="/assets//mashkraft-logo-white.svg" alt="" />
+        </a>
+        <div class="flex items-center ml-auto">
+          <nav class="header-links contents font-semibold text-base lg:text-lg">
+            <ul class="flex items-center ml-4 xl:ml-8 mr-auto">
+              <li class="p-3 xl:p-6 active">
+                <a href="">
+                  <span>Home</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown p-3 xl:p-6">
+                <a href="" class="nav-link flex items-center">
+                  <span>Services</span>
+                  <svg
+                    class="h-3 opacity-50 ml-2"
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="far"
+                    data-icon="chevron-down"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    class="svg-inline--fa fa-chevron-down fa-w-14 fa-7x"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"
+                    ></path>
+                  </svg>
+                </a>
+                <nav
+                  class="submenu submenu-services flex space-x-8 overflow-hidden"
+                >
+                  <ul class="submenu-items flex flex-col flex-wrap space-y-6">
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link hover-1"
+                        >MVP Development</a
+                      >
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link"
+                        >Custom Software Development</a
+                      >
+                    </li>
+
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link"
+                        >Mobile App Development</a
+                      >
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">Web App Development</a>
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">E-Commerce</a>
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">UI/UX</a>
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">Chatbots</a>
+                    </li>
+                  </ul>
+                  <ul
+                    class="submenu-items border-l border-gray-400 pl-8 flex flex-col flex-wrap space-y-6"
+                  >
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">Internet of Things</a>
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">Data Scraping</a>
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">Blockchain</a>
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link"
+                        >AI and Machine Learning</a
+                      >
+                    </li>
+                  </ul>
+                </nav>
+              </li>
+              <li class="p-3 xl:p-6">
+                <a href="">
+                  <span>About</span>
+                </a>
+              </li>
+              <li class="p-3 xl:p-6">
+                <a href="">
+                  <span>Projects</span>
+                </a>
+              </li>
+              <!-- dropdown menu  -->
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link"><span>More</span></a>
+                <nav class="submenu">
+                  <ul class="submenu-items">
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">About</a>
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">Contact</a>
+                    </li>
+                    <li class="submenu-item">
+                      <hr class="submenu-seperator" />
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">Support</a>
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">FAQs</a>
+                    </li>
+                    <li class="submenu-item">
+                      <a href="#" class="submenu-link">Careers</a>
+                    </li>
+                  </ul>
+                </nav>
+              </li>
+              <li class="p-3 xl:p-6">
+                <a href="">
+                  <span>Contacts</span>
+                </a>
+              </li>
+              <li class="p-3 xl:p-6">
+                <a href="" class="flex items-center">
+                  <span>Pages</span>
+                  <svg
+                    class="h-3 opacity-30 ml-2"
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="far"
+                    data-icon="chevron-down"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    class="svg-inline--fa fa-chevron-down fa-w-14 fa-7x"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"
+                    ></path>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="border-l flex items-center px-4 lg:px-6 xl:px-8">
+            <a href="#" class="mr-4 lg:mr-6 xl:mr-8">
+              <svg
+                class="h-6 xl:h-8"
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="far"
+                data-icon="search"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                class="svg-inline--fa fa-search fa-w-16 fa-3x"
+              >
+                <path
+                  fill="currentColor"
+                  d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
+                ></path>
+              </svg>
+            </a>
+            <button
+              id="navbar-contact-us"
+              class="navbar-contact-us bg-black hover:bg-gray-700 text-white font-bold px-4 xl:px-6 py-2 xl:py-3 rounded"
+            >
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </section>
+      <!--HERO SECTION -->
+      <section id="hero-section" class="relative w-screen h-screen">
+        <div class="absolute w-screen h-screen z-10 bg-black/80">
+          <div
+            class="relative overflow-hidden w-full text-white opacity-100 mx-auto max-w-screen-xl px-4 py-8 lg:py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
+          >
+            <div class="text-center md:text-left space-y-6 md:mt-16">
+              <p class="">Transforming Ideas Into Reality</p>
+              <div>
+                <h1 class="text-3xl font-extrabold md:text-5xl pb-4">
+                  We help you launch your next
+                </h1>
+                <h1
+                  class="underline-style underline-style-overflow text-3xl font-extrabold md:text-5xl block font-extrabold text-rose-500"
+                >
+                  Big Thing.
+                </h1>
+              </div>
+
+              <p class="mt-4 max-w-xl md:text-xl md:leading-relaxed">
+                MASHKRAFT is a one stop software company providing world-class
+                digital solutions that create value. With core expertise in
+                Block Chain, Custom software, Web & Mobile apps, CRMs, ERPs, and
+                cloud solutions, powered by next-gen technologies like
+                Artificial Intelligence & Machine Learning.
+              </p>
+            </div>
+            <div
+              id="hero-girl"
+              class="w-[400px] hidden lg:block absolute bottom-0 right-14"
+            >
+              <img src="/assets/girl.webp" alt="" />
+            </div>
+            <div
+              id="hero-man"
+              class="hero-human-show w-[600px] hidden lg:block absolute bottom-0 right-14"
+            >
+              <img src="/assets/man.webp" alt="" />
+            </div>
+          </div>
+        </div>
+        <video
+          playsinline
+          autoplay
+          muted
+          loop
+          poster="/assets/video/bg-poster.webp"
+          class="absolute top-0 left-0 w-screen h-screen object-cover"
+        >
+          <source src="/assets/video/background-earth.webm" type="video/mp4" />
+        </video>
+        <script>
+          var vid = document.querySelector("video");
+          vid.playbackRate = 0.7;
+        </script>
+        <svg
+          id="wave"
+          style="transform: rotate(180deg); transition: 0.3s"
+          viewBox="0 0 1440 100"
+          class="absolute md:bottom-[-50px] lg:bottom-[-70px] xl:bottom-[-90px] left-0 -z-10"
+        >
+          <defs>
+            <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
+              <stop stop-color="rgba(0, 0, 0, 1)" offset="0%"></stop>
+              <stop stop-color="rgba(244, 63, 94, 1)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            style="transform: translate(0, 0px); opacity: 1"
+            fill="url(#sw-gradient-0)"
+            d="M0,80L1440,20L2880,0L4320,90L5760,90L7200,30L8640,20L10080,60L11520,20L12960,60L14400,70L15840,50L17280,70L18720,70L20160,20L21600,70L23040,40L24480,40L25920,10L27360,60L28800,30L30240,70L31680,80L33120,70L34560,60L34560,100L33120,100L31680,100L30240,100L28800,100L27360,100L25920,100L24480,100L23040,100L21600,100L20160,100L18720,100L17280,100L15840,100L14400,100L12960,100L11520,100L10080,100L8640,100L7200,100L5760,100L4320,100L2880,100L1440,100L0,100Z"
+          ></path>
+        </svg>
+      </section>
+    </header>
+
+    <!-- brands logos -->
+    <section class="mt-8 opacity-80">
+      <div class="flex flex-wrap items-center justify-evenly">
+        <img class="h-12 lg:h-16" src="/assets/brands/olx.svg" alt="" />
+        <img class="h-6 lg:h-10" src="/assets/brands/xw.png" alt="" />
+
+        <img class="h-6 lg:h-10" src="/assets/brands/cars-45-logo.svg" alt="" />
+
+        <img
+          class="h-12 lg:h-16"
+          src="/assets/brands/fcg-logo-170.png"
+          alt=""
+        />
+
+        <img
+          class="h-12 lg:h-16"
+          src="/assets/brands/belimobilegue.webp"
+          alt=""
+        />
+      </div>
+    </section>
+
+    <!-- about company 1 -->
+    <section class="my-24">
+      <div class="bg-white">
+        <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+          <div
+            class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12"
+          >
+            <div class="md:5/12 lg:w-5/12">
+              <img
+                src="/assets/home/mashkraft-manimage.webp"
+                alt="image"
+                loading="lazy"
+                width=""
+                height=""
+              />
+            </div>
+            <div class="md:7/12 lg:w-6/12">
+              <h2 class="text-2xl text-gray-900 font-bold md:text-4xl">
+                Trusted by Leading Companies across the World
+              </h2>
+              <p class="mt-6 text-gray-700 text-lg">
+                We transform ideas into digital platforms with an accelerated
+                time-to-market. Our innovative strategies drive real business
+                value through optimization and fast development cycles. We are
+                not just developer but carry deep business expertise and domain
+                knowledge for multiple industries, leading to better solutions
+                and increased competitive advantage for our clients.
+              </p>
+              <p class="mt-4 text-gray-700 text-lg">
+                Trusted by
+                <span class="font-bold" style="color: rgb(185, 28, 28)"
+                  >200+ happy clients</span
+                >
+                , across
+                <span class="font-bold" style="color: #b91c1c">
+                  North America, Europe, Asia and Africa</span
+                >
+                , ranging from
+                <span class="font-bold" style="color: #b91c1c">
+                  startups to Fortune 500 companies .</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- services  -->
+    <section class="site-wrapper relative overflow-hidden">
+      <video
+        playsinline
+        autoplay
+        muted
+        loop
+        poster="/assets/video/hand-earth.webp"
+        class="absolute bottom-0 left-0 z-10 object-cover w-1/3"
+      >
+        <source src="/assets/video/hand-earth.webm" type="video/mp4" />
+      </video>
+      <div class="pt-table desktop-768 overflow-hidden">
+        <div class="pt-tablecell page-home relative">
+          <div class="overlay"></div>
+          <div
+            class="md:7/12 lg:w-6/12 mx-auto text-white text-center relative z-30 mb-16 py-8 md:py-0"
+          >
+            <h1
+              class="underline-style underline-style-overflow text-3xl font-extrabold md:text-5xl block font-extrabold text-rose-500"
+            >
+              Our Services
+            </h1>
+          </div>
+          <div class="flex relative z-20">
+            <div class="row flex w-screen">
+              <div
+                class="max-w-7xl mx-auto w-screen col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8"
+              >
+                <div id="testing">
+                  <div class="hexagon-menu clear md:pl-[5%] lg:pl-0 ml-auto">
+                    <div class="hexagon-item">
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <a class="hex-content">
+                        <span class="hex-content-inner">
+                          <span class="icon">
+                            <i class="fa-solid fa-rocket"></i>
+                          </span>
+                          <span class="title">MVP Development</span>
+                        </span>
+                        <svg
+                          viewBox="0 0 173.20508075688772 200"
+                          height="200"
+                          width="174"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                            fill="#1e2530"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="hexagon-item">
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <a class="hex-content">
+                        <span class="hex-content-inner">
+                          <span class="icon">
+                            <i class="fa-solid fa-code"></i>
+                          </span>
+                          <span class="title">Custom Software Development</span>
+                        </span>
+                        <svg
+                          viewBox="0 0 173.20508075688772 200"
+                          height="200"
+                          width="174"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                            fill="#1e2530"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="hexagon-item">
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <a class="hex-content">
+                        <span class="hex-content-inner">
+                          <span class="icon">
+                            <i class="fa fa-id-badge"></i>
+                          </span>
+                          <span class="title">Mobile App Development</span>
+                        </span>
+                        <svg
+                          viewBox="0 0 173.20508075688772 200"
+                          height="200"
+                          width="174"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                            fill="#1e2530"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="hexagon-item">
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <a class="hex-content">
+                        <span class="hex-content-inner">
+                          <span class="icon">
+                            <i class="fa-solid fa-file-code"></i>
+                          </span>
+                          <span class="title">Web Development</span>
+                        </span>
+                        <svg
+                          viewBox="0 0 173.20508075688772 200"
+                          height="200"
+                          width="174"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                            fill="#1e2530"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="hexagon-item">
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <a class="hex-content">
+                        <span class="hex-content-inner">
+                          <span class="icon">
+                            <i class="fa-solid fa-brain"></i>
+                          </span>
+                          <span class="title">Data Science and AI</span>
+                        </span>
+                        <svg
+                          viewBox="0 0 173.20508075688772 200"
+                          height="200"
+                          width="174"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                            fill="#1e2530"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="hexagon-item">
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <a class="hex-content">
+                        <span class="hex-content-inner">
+                          <span class="icon">
+                            <i class="fa-solid fa-house-signal"></i>
+                          </span>
+                          <span class="title">Internet of Things</span>
+                        </span>
+                        <svg
+                          viewBox="0 0 173.20508075688772 200"
+                          height="200"
+                          width="174"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                            fill="#1e2530"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="hexagon-item">
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <div class="hex-item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <a class="hex-content">
+                        <span class="hex-content-inner">
+                          <span class="icon">
+                            <i class="fa-solid fa-hexagon-image"></i>
+                          </span>
+                          <span class="title">Blockchain</span>
+                        </span>
+                        <svg
+                          viewBox="0 0 173.20508075688772 200"
+                          height="200"
+                          width="174"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                            fill="#1e2530"
+                          ></path>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- see more services  -->
+    <section
+      class="relative pt-4 pb-16 w-full hidden lg:flex justify-center overflow-hidden"
+    >
+      <div class="services-all mt-12">
+        <div class="services-lefter">
+          <div class="services-text">Hosting</div>
+        </div>
+        <div class="services-left">
+          <div class="services-text">Web Design</div>
+        </div>
+        <div class="services-center">
+          <div class="services-explainer text-center">
+            <span>See More Services</span>
+          </div>
+          <div class="services-text">Frontend Development</div>
+        </div>
+        <div class="services-right">
+          <div class="services-text">Backend Development</div>
+        </div>
+        <div class="services-righter">
+          <div class="services-text">SEO</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Software developement -->
+    <section class="mb-24 mt-24 md:mt-0 text-gray-600 body-font">
+      <div
+        class="container px-5 py-16 mb-16 mx-auto bg-yellow-200 relative rounded-tr-[120px] rounded-bl-[120px] overflow-hidden"
+      >
+        <svg
+          class="absolute left-0 top-0 w-72 opacity-50"
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="rgb(225 29 72) "
+            d="M64.3,-23.4C68.9,-6.9,48.1,15.3,25.1,31.3C2.1,47.3,-23.2,57,-41.8,46.2C-60.4,35.3,-72.3,4,-64.2,-17.4C-56.2,-38.7,-28.1,-50.1,0.9,-50.4C29.9,-50.7,59.8,-39.9,64.3,-23.4Z"
+            transform="translate(100 100)"
+          />
+        </svg>
+        <svg
+          class="absolute right-0 -bottom-16 w-72 opacity-50"
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="#FF0066"
+            d="M45.4,-59.6C58.1,-53.2,67.3,-39,69.5,-24.4C71.8,-9.8,67,5.2,61.4,19.2C55.8,33.2,49.4,46.1,39,55.3C28.6,64.5,14.3,69.8,-2.5,73.2C-19.2,76.6,-38.5,78,-49.7,69.2C-61,60.3,-64.2,41.1,-62.7,25.2C-61.2,9.4,-54.9,-3.2,-51.4,-17.5C-47.8,-31.7,-46.9,-47.6,-38.8,-55.5C-30.7,-63.4,-15.4,-63.3,0.5,-63.9C16.3,-64.6,32.6,-66,45.4,-59.6Z"
+            transform="translate(100 100)"
+          />
+        </svg>
+        <div
+          class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto"
+        >
+          <div
+            class="md:7/12 lg:w-6/12 flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900 space-y-4"
+          >
+            <p class="text-rose-600">We Solve Real Problems</p>
+            <h2 class="text-2xl text-gray-900 font-bold md:text-4xl">
+              Custom Software Development Services
+            </h2>
+            <p class="mt-6 text-gray-700 text-lg">
+              Our cross-functional team of designers, software architects,
+              engineers and managers work together to create tailor-made digital
+              systems to achieve your business goals and surprise you when they
+              surpass your expectations.
+            </p>
+          </div>
+          <button
+            class="flex-shrink-0 text-white bg-rose-600 border-0 py-2 px-8 focus:outline-none hover:bg-rose-700 rounded text-lg mt-10 sm:mt-0"
+          >
+            Get a free quote
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- completed projects  -->
+    <section class="text-white bg-gray-200 py-32 body-font overflow-hidden">
+      <div class="container px-5 mx-auto">
+        <div class="flex flex-wrap -m-12 space-y-8 md:space-y-0 md:space-x-8">
+          <!-- left -->
+          <div
+            class="w-11/12 mx-auto md:w-[47%] flex flex-col items-start bg-no-repeat bg-cover overflow-hidden"
+            style="background-image: url(/assets/home/page-frame-1.webp)"
+          >
+            <div class="bg-black/30 p-8">
+              <h1
+                class="underline-style underline-style-overflow text-3xl font-extrabold sm:text-5xl block text-rose-500"
+              >
+                200+
+              </h1>
+              <h2 class="sm:text-3xl text-2xl title-font font-medium mt-4 mb-4">
+                Satisfied Clients
+              </h2>
+              <p class="leading-relaxed mb-8">
+                Our clients range from early stage startups to Fortune500
+                companies across the world.
+              </p>
+            </div>
+          </div>
+          <!-- right  -->
+          <div
+            class="w-11/12 mx-auto md:w-[47%] flex flex-col items-start bg-no-repeat bg-cover overflow-hidden"
+            style="background-image: url(/assets/home/page-frame-4.webp)"
+          >
+            <div class="bg-black/30 p-8">
+              <h1
+                class="underline-style underline-style-overflow text-3xl font-extrabold sm:text-5xl block font-extrabold text-rose-500"
+              >
+                450+
+              </h1>
+              <h2 class="sm:text-3xl text-2xl title-font font-medium mt-4 mb-4">
+                Projects Completed
+              </h2>
+              <p class="leading-relaxed mb-8">
+                We have delivered IT projects ranging from enterprise solutions
+                to mobile apps on time, on budget, and on value.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mt-8">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet vero
+      asperiores voluptatibus eaque iusto nisi voluptas sit qui molestiae dolor
+      deserunt dolorem non, numquam animi. Nisi aspernatur optio possimus ab.
+      Quis doloremque quo, soluta modi perspiciatis, quibusdam unde, tempora
+      facilis amet numquam eius non voluptas ipsum itaque accusamus accusantium
+      et dolores velit minima. In labore, harum eveniet sunt odio illo! Quisquam
+      nesciunt dolore, eos libero recusandae hic tempore, doloribus placeat
+      nobis atque fugiat reprehenderit aliquid nulla. Aspernatur cum fugiat,
+      libero corrupti, nulla maxime debitis voluptates deleniti delectus autem,
+      blanditiis cumque? Quo, neque nisi quasi quisquam veniam officia
+      reiciendis necessitatibus perspiciatis voluptate perferendis est ipsam
+      soluta quae fuga. Distinctio expedita quibusdam voluptatem, ullam odit
+      neque error minus, perspiciatis repudiandae assumenda impedit. Qui labore
+      exercitationem odio quae magni, quasi debitis inventore magnam in fugit,
+      quam modi consequuntur velit earum aperiam dolor quis natus neque unde ea
+      illum dignissimos quaerat eaque maxime? Dolorem! Nulla laborum culpa,
+      perspiciatis unde dolores dolorum dignissimos, rem minus dolorem in
+      nesciunt cumque? Eligendi soluta labore aut quia quos obcaecati esse
+      maxime eos, similique molestias deserunt minima quo quibusdam. Temporibus
+      vel porro culpa! Reiciendis fugit accusantium eaque cum veritatis ipsa,
+      sapiente perferendis in magni, repellat dignissimos facere quam a quia
+      quod qui dicta alias esse tenetur eligendi fugiat incidunt! Tempora,
+      incidunt! Unde accusantium distinctio nesciunt, voluptatem, quam, quos
+      alias temporibus facilis molestiae rem dolor dignissimos? Dolorem unde
+      facere expedita consequatur suscipit alias possimus molestiae, illum
+      aperiam ratione est culpa! Unde expedita voluptas vel soluta sapiente
+      magni. Cumque iusto quidem corrupti magni enim, quasi doloremque amet
+      voluptatem nulla nam reiciendis accusantium dolor. Odio velit aliquid
+      impedit, ex qui deserunt ad. Consequuntur cumque assumenda omnis,
+      aspernatur animi voluptates cupiditate laudantium iusto molestias commodi
+      suscipit doloremque aperiam illum adipisci nostrum tenetur quam
+      repudiandae saepe, unde quo fugit ab! Necessitatibus, iure. Architecto,
+      unde! Similique consequuntur ad accusantium, minus illo iure ex.
+      Repudiandae minus rem veritatis suscipit, incidunt at hic, officia animi
+      quia quod architecto sunt totam eveniet ea nam dolorem? Rem, voluptates
+      maiores! Maxime, veritatis quaerat ipsum facere quis at eos deleniti fuga
+      nisi fugit ut explicabo temporibus. A maxime laudantium facilis
+      dignissimos vel rerum quisquam reiciendis nihil consequatur. Voluptatum
+      quaerat veniam repellendus. Odit inventore, optio nemo, modi reiciendis in
+      sequi unde praesentium, molestias officia quis impedit itaque nobis
+      repellendus necessitatibus earum nesciunt incidunt illum perspiciatis
+      iusto? Earum perferendis facilis nulla sed ratione. Libero illum
+      asperiores delectus aspernatur, tempore pariatur debitis amet laudantium
+      quam velit. Provident cum, excepturi eos nobis exercitationem in libero
+      voluptatem amet laudantium, voluptas vitae quas quaerat impedit, iste
+      doloremque? Recusandae quae ad eligendi. Dolorum facere et culpa quasi in
+      ut voluptates, nam suscipit repudiandae error veniam nostrum nesciunt
+      consequuntur accusantium, quisquam, officiis odio velit ea molestiae
+      reiciendis! Facilis, quae. Assumenda fuga voluptatum, ea quo nisi velit in
+      perferendis eveniet, deserunt vero maxime quis accusantium a. Ut deserunt
+      optio nam suscipit enim eos hic perspiciatis, ad culpa commodi, molestias
+      omnis. Delectus pariatur, officiis nemo modi nobis blanditiis dicta quae
+      nam, explicabo suscipit nulla similique numquam necessitatibus veritatis
+      ad quam earum voluptate? Veritatis vel voluptas, necessitatibus culpa
+      impedit temporibus in sit? Vitae possimus assumenda laborum a minima
+      laboriosam, praesentium temporibus vel beatae animi? Ipsam ab quis nulla
+      distinctio perferendis velit ex consectetur suscipit minima, sapiente id
+      obcaecati officiis aut. Fugiat, facilis. Dolorem deserunt possimus,
+      repellat aliquid nihil, nobis ea obcaecati harum sapiente minus numquam
+      quos, molestiae non corporis? Maxime quidem reprehenderit repellat ipsam
+      minima adipisci aliquam consequuntur aliquid neque cum! Consectetur!
+      Aperiam minus ratione quae itaque, natus at autem qui soluta quam dolor
+      magnam earum impedit inventore dignissimos est tenetur consectetur cum ab.
+      Non doloremque numquam, fugit optio quam obcaecati cupiditate! Voluptates,
+      quisquam possimus expedita totam mollitia qui repellendus. Ipsa,
+      praesentium vel. Facere, alias amet! Nobis accusantium sit quisquam optio
+      quod? Nobis enim, voluptatem asperiores consequuntur incidunt quae
+      quisquam itaque perspiciatis! Consequatur adipisci dolores iusto esse,
+      rerum a velit voluptas amet alias asperiores sed voluptates, nesciunt
+      laudantium possimus quaerat. Esse quibusdam dolorem sunt odio nemo quasi
+      rerum velit neque voluptates magni. Eos saepe accusamus nulla nihil et
+      natus id qui cupiditate aut iusto, fuga similique, velit laborum. Alias
+      dolorem laudantium ducimus accusantium. Commodi id inventore, veritatis
+      vitae amet eveniet placeat perferendis. Deleniti minima laborum
+      praesentium accusamus quae labore, illo repellendus ad est dolore dolor
+      officiis doloremque? Aliquid, tempore labore dicta error iure dolore
+      mollitia. Commodi adipisci placeat at ipsam, debitis vitae! Veritatis
+      temporibus corporis illo dignissimos consectetur, non eveniet commodi
+      dolores, rerum quo voluptate hic expedita sunt repudiandae vitae quibusdam
+      autem minus accusamus culpa laboriosam architecto amet! Consequatur sint
+      ad itaque! Ullam ratione ipsa voluptate accusamus ipsam repudiandae
+      tenetur nam sapiente alias et dolorum corrupti, quia asperiores placeat,
+      veniam fuga ducimus quas minus in nostrum. Itaque aliquam voluptate
+      architecto enim quasi? Eius nesciunt illum quam id libero sit a iusto
+      aperiam voluptatum architecto debitis, aut dolorem cum dolores voluptatem
+      maiores reiciendis ipsa quaerat iste repellendus, in, aliquam odio
+      dignissimos nam. Quos? Voluptate natus nisi distinctio fugiat dolorem
+      error? Sequi ipsum soluta dignissimos. Harum, laborum. Laudantium ad
+      similique qui dolorum, reiciendis eos debitis expedita optio eligendi
+      sapiente fugiat dicta necessitatibus voluptatibus eum? Laudantium unde
+      voluptas rem eum ullam molestias mollitia officiis harum voluptates,
+      delectus, architecto consectetur maxime natus nobis saepe fugiat quidem
+      amet? Iure, incidunt quisquam repellendus nam quibusdam aliquam quam
+      reiciendis? Esse delectus totam rerum quae saepe eius fugiat, neque soluta
+      asperiores nam et! Minima deserunt laudantium sunt? In fugiat quaerat, id
+      quas ipsum nemo et nesciunt inventore, eaque laboriosam consectetur?
+      Quisquam suscipit a, nobis ad minus nesciunt laudantium porro, deserunt
+      architecto quibusdam quas sint sunt quaerat doloremque repudiandae ex
+      facere reprehenderit eaque cum nam laborum cupiditate! Aperiam culpa
+      corporis officiis? Harum velit vitae voluptatum dolorem magni autem cumque
+      ab facere quos quas, culpa tempora blanditiis atque quam officia
+      explicabo. Sint, nam. Debitis quod porro, commodi quidem saepe nam
+      officiis vitae. Delectus voluptates expedita commodi aut! Dolor harum
+      distinctio, neque culpa vel tempore! Officiis quaerat laborum iusto totam
+      beatae molestias tempora, aperiam dolorum, repellat reiciendis quod
+      nostrum unde eos corporis! Dolorum. Ducimus fuga ipsum consectetur rerum
+      eius quidem assumenda adipisci voluptatum, asperiores iste eos,
+      repudiandae modi nisi sit magnam incidunt nemo, id expedita? Voluptate
+      sapiente recusandae ratione est tenetur culpa deserunt! Minima
+      voluptatibus maxime fugit ipsam perferendis voluptates voluptate, commodi
+      sapiente odio quasi modi assumenda laboriosam nostrum magni adipisci in
+      dolorem vero consectetur veniam quia accusamus quidem? Fugiat sed
+      veritatis voluptatem. Corrupti a similique dolore, quaerat earum
+      repellendus non aperiam accusantium atque labore quis impedit ducimus esse
+      aliquam dolorum mollitia voluptatibus, culpa id recusandae ex, explicabo
+      cumque ratione officiis itaque! Aperiam. Excepturi dolores hic fuga eius
+      sunt repellat est quaerat quo officiis magnam? Neque nemo tempora aliquam,
+      reprehenderit sed odio repudiandae obcaecati cum, dolores totam hic harum
+      quod commodi, maxime suscipit? Nihil natus perferendis ratione placeat
+      maxime incidunt, amet quis expedita aliquid non, repellat eum quos itaque,
+      architecto molestias neque asperiores saepe? Magni commodi cum ipsam eius
+      et voluptates veniam sunt! Molestias maxime repudiandae suscipit facere,
+      labore atque veniam sed aut reiciendis quisquam quod mollitia vero officia
+      blanditiis quo doloremque? At quo, esse saepe assumenda consequuntur et
+      delectus unde dolores quidem! Debitis nihil fuga distinctio ducimus ipsum
+      animi perferendis unde voluptates ad minima, optio, atque quaerat numquam!
+      Consequuntur deleniti a, at minus temporibus illum quam rem porro magni
+      veritatis, error tempora! Minus adipisci cupiditate ullam voluptatibus
+      reiciendis quis vitae molestiae ea, fugiat dolor quam, reprehenderit
+      fugit, eaque omnis odio amet! Omnis, temporibus ipsum? Voluptatum placeat
+      eum quod. Facilis laudantium nam nemo. Aut sequi dicta nihil, repellat
+      unde dignissimos consectetur delectus blanditiis? Illum tenetur laborum,
+      facilis alias sint, libero perferendis natus saepe molestiae sequi tempora
+      ratione explicabo dicta! Aliquam consequatur ab sint. Ipsum tenetur nemo
+      autem corporis placeat eum itaque architecto repudiandae similique natus,
+      saepe laborum eos asperiores reprehenderit pariatur a numquam delectus
+      rem, quasi, sequi dolorum adipisci soluta. Dolor, suscipit itaque. Aliquam
+      natus libero eveniet voluptate aliquid, optio voluptas et alias voluptates
+      maiores voluptatem laboriosam! Incidunt at delectus hic nam necessitatibus
+      earum voluptatum dicta nostrum beatae. Consequuntur reprehenderit magni
+      culpa ullam. Veritatis vel totam quod veniam odit? Magnam quis voluptatem
+      id ad ut sunt eum! Deserunt adipisci, minus dicta soluta necessitatibus,
+      alias natus ducimus esse possimus atque consequatur nulla corporis quod!
+      Vel, maxime, fugiat exercitationem, nihil laboriosam assumenda placeat
+      labore odit eius velit cumque earum. Eligendi similique quae excepturi
+      dignissimos maxime ducimus nam perspiciatis nihil, quasi debitis nobis ab
+      officia vero? In nihil sit officiis sed vel asperiores odit rerum ex hic.
+      Aspernatur et, omnis error rem magnam quae dolorem officiis ab facilis
+      ducimus illo porro, nihil ex animi suscipit eaque! Recusandae nihil
+      dolorum sed qui hic aspernatur? Velit nemo quod temporibus impedit. Nulla
+      labore nemo vero culpa quibusdam accusantium excepturi nobis perspiciatis
+      veritatis iure laborum voluptatem, aut molestiae minus voluptas.
+      Doloremque error quam culpa id ipsum fugit quia modi nemo deserunt ipsam
+      temporibus voluptates aliquam, quae, perspiciatis atque. Autem quod
+      commodi illum eligendi. Repellendus impedit ratione eaque aliquid sunt
+      perspiciatis. Animi deserunt et, illo dignissimos explicabo hic doloremque
+      distinctio nihil dolor autem quo consequuntur temporibus officia porro
+      magnam rerum quae excepturi! Voluptatibus, dolor minus ea eveniet dolore
+      alias. Quo, eum! Nemo, asperiores nisi! Amet distinctio ab voluptas
+      eveniet dolorum exercitationem, accusantium harum unde a perspiciatis
+      consequuntur error ut. Quibusdam labore laborum totam veritatis alias nisi
+      maxime delectus commodi, error tempora. Deserunt, voluptatem reiciendis
+      possimus molestias eos deleniti quis cumque nesciunt alias necessitatibus!
+      Natus eius, corporis facere, eos molestias tempora, quia non dicta impedit
+      eligendi commodi omnis eaque recusandae pariatur autem! Mollitia, dolorem
+      quia odit molestias provident consequuntur. Assumenda recusandae officia
+      magni facere, quos laudantium similique itaque iure temporibus qui.
+      Debitis cumque incidunt laudantium corrupti fugiat, harum perspiciatis
+      necessitatibus corporis distinctio. Voluptates libero quia deleniti
+      molestiae necessitatibus, velit voluptatem, eligendi distinctio, ipsa ab
+      quod dolorem ducimus commodi ad porro! Molestias obcaecati cupiditate enim
+      nemo pariatur rerum quas. Ea doloremque ratione cupiditate. Eligendi alias
+      cupiditate, optio sint nesciunt impedit harum quos aspernatur ea possimus
+      repellat porro excepturi recusandae deserunt atque iusto! Nostrum neque
+      incidunt aliquid voluptates animi sed sint dolore facilis veniam?
+      Perspiciatis, labore. Sequi animi, perspiciatis officiis est odit quidem
+      cumque cupiditate voluptatum, natus, id nemo! Quaerat aliquam perferendis
+      repellat voluptatem sit ipsum nemo delectus id quisquam voluptate,
+      laudantium quis minima? Deleniti voluptas odit quia, dolores quis libero
+      sit. Minima fugit optio reprehenderit vel praesentium veritatis eius nulla
+      ipsa! Molestiae necessitatibus commodi eveniet veritatis sapiente? Nulla
+      pariatur ducimus soluta impedit repellendus. Optio reiciendis minus vel
+      aperiam explicabo molestiae nemo ea. Commodi quibusdam asperiores,
+      temporibus voluptatum eos sapiente quae deserunt cupiditate rem, amet
+      rerum blanditiis iure modi adipisci iusto quaerat? Eius, inventore?
+      Incidunt saepe error doloremque accusantium debitis consequuntur
+      repudiandae quisquam sequi cum quod? Quod libero dolorem fugit sit
+      inventore, eum perspiciatis consectetur, facilis quam repellat voluptates
+      eligendi distinctio illo quia molestiae! Molestias, nihil voluptates.
+      Asperiores nam, accusamus eum laboriosam corporis veritatis culpa
+      exercitationem amet tempora, optio dolores unde quos atque omnis eius
+      possimus tenetur aspernatur eos necessitatibus! Vel illo fuga alias.
+      Deserunt voluptatum nulla eos ipsum incidunt nobis quasi debitis minima,
+      soluta aut repudiandae doloribus totam numquam, laboriosam voluptatem
+      quibusdam explicabo culpa veritatis recusandae! Illo natus tenetur est
+      aperiam labore distinctio. Aliquid praesentium nam, ratione amet vel
+      perspiciatis eius quidem, ipsam magni doloremque eveniet, enim esse quos?
+      Sed, praesentium? In commodi beatae voluptatibus nihil debitis quaerat
+      accusantium ullam vero reiciendis adipisci! Reiciendis dolorum quasi
+      impedit delectus. Nulla, quibusdam? Repudiandae, alias repellat totam rem
+      nemo labore veniam! Accusamus minima unde expedita ducimus architecto vel
+      quos reiciendis dolorem ab! Tenetur nihil provident quia. Recusandae
+      repellat fugiat perspiciatis facere odio et unde id numquam quis,
+      exercitationem accusantium rem consequatur maxime illum officiis debitis
+      quidem! Alias tenetur odio quo eum explicabo quisquam impedit deleniti
+      sint! Ex ut vero perferendis, nobis, quibusdam dolore laborum doloremque
+      quia iure atque recusandae! Sint ipsum cupiditate enim aliquid corporis,
+      repellat eius, ad labore ab amet repudiandae alias? Laborum, animi amet.
+      Officia suscipit provident dolorem accusamus molestiae. Delectus
+      repudiandae possimus sit quia quisquam. Facilis est fuga officiis! Qui
+      provident quam asperiores maiores optio soluta rem facilis ipsa fuga,
+      impedit amet! Dolorum. Temporibus minus ullam atque amet maiores,
+      repellat, non aliquam explicabo ab earum tenetur beatae vel eligendi eaque
+      provident magni a optio quod sapiente vitae fugit minima. Dolorum enim
+      necessitatibus iure. Libero veniam excepturi non minus aspernatur
+      accusantium qui expedita, nemo quaerat culpa, ipsum vel cum fugiat
+      doloribus fugit voluptatem quae deleniti deserunt aperiam! Sed repellat
+      alias consectetur minus ea temporibus. Veniam deserunt magni obcaecati,
+      veritatis ab fugiat ipsam sint nesciunt harum maxime reiciendis ad
+      delectus necessitatibus error, quasi cumque beatae quam neque assumenda
+      sequi, expedita aliquid. Maiores neque temporibus recusandae. Libero,
+      sapiente mollitia aperiam, minima dolor eum quisquam fugiat doloribus nemo
+      enim cum error vel nobis voluptate velit sit ad quas dolorum id officia
+      veniam odit, vero eos voluptas! Magnam. Adipisci dolores deleniti,
+      accusamus odit eligendi laborum error sed ipsam id molestias porro labore
+      iusto a nemo perspiciatis hic, tempore, alias ea quasi nostrum consectetur
+      commodi sunt laudantium reiciendis! Cumque. Totam atque cupiditate, quos
+      voluptates eligendi velit rerum dolorem doloribus earum officia laudantium
+      eum numquam dolorum dolore. Non neque molestias cupiditate ab! Cumque
+      delectus omnis quae dolores amet. Iste, doloremque! Reiciendis deserunt
+      esse consequuntur nobis praesentium pariatur blanditiis ut vitae rerum
+      vero ipsum sequi sit debitis natus corrupti iure totam, facilis aut
+      dolore. Ipsum laboriosam minima repudiandae eius eaque aut. Iste minus
+      cupiditate vitae! Eum dicta, asperiores ab natus eligendi nam vitae
+      quibusdam amet delectus tempora numquam accusantium sequi ipsam! Ut error
+      ab ratione voluptate voluptatibus eaque magni pariatur. Consectetur.
+      Dolor, quidem sed laboriosam aperiam dolorem deserunt labore. Quaerat
+      maiores, excepturi nobis, dignissimos soluta doloremque impedit tenetur
+      exercitationem, hic eius dolor dolorem quos. Numquam tenetur neque a
+      voluptas cumque blanditiis. Provident, nisi debitis quam, earum ducimus
+      perspiciatis excepturi velit explicabo dolore ex deleniti delectus
+      exercitationem. Nulla expedita itaque nobis, omnis enim ullam error
+      tenetur. Nam minus ratione voluptatibus deleniti illo! Earum, harum.
+      Aliquid saepe suscipit eligendi aspernatur eaque nemo vero ut, aperiam
+      magni nostrum, unde eum reiciendis dolore! Iure eveniet cupiditate
+      necessitatibus error corrupti laborum maiores enim ducimus unde minima.
+      Placeat eum voluptatem itaque fugiat atque. Eveniet quos, id rerum ipsum
+      explicabo quaerat omnis facilis expedita quisquam, consequuntur quam
+      asperiores iste quidem. Repudiandae dolore inventore laudantium, eligendi
+      corporis adipisci vel. Voluptatem reiciendis dolor ad! Quod dignissimos
+      dicta nihil, eius modi expedita iusto quia distinctio adipisci nisi saepe
+      sequi totam odio harum beatae sint dolorem non repudiandae ex? Molestiae,
+      saepe reiciendis! Modi aliquid voluptate aspernatur nobis similique eum
+      eos provident sequi qui ratione, facilis perferendis ipsam iusto itaque
+      doloribus. Modi explicabo incidunt vitae. Quas autem earum in provident
+      cupiditate natus adipisci. Repudiandae sequi iste, sed blanditiis sapiente
+      ut quas molestias temporibus quam facere ipsum recusandae culpa eveniet
+      facilis neque. Officiis, earum? Similique iusto ducimus ipsam illum harum
+      dolorum fuga perferendis magni. Vitae officia, cumque laborum dolores quia
+      reprehenderit deserunt. Eveniet expedita, id incidunt numquam libero
+      aliquid labore itaque nihil maxime optio architecto enim saepe perferendis
+      sunt nostrum quod consectetur dolorem recusandae. Quidem, itaque. Nobis
+      provident consequuntur possimus suscipit repellendus adipisci debitis
+      beatae et quis quae minima atque sapiente consectetur, perferendis dicta
+      ipsa nemo corrupti officia voluptatem unde assumenda eos voluptatum
+      commodi. Alias, dignissimos quos. Sit, eos. Officiis corrupti in aut
+      assumenda perspiciatis, totam nulla adipisci voluptates corporis,
+      cupiditate accusantium aliquid rem. Cupiditate odit quaerat beatae
+      incidunt. Ratione amet vero molestiae quidem. Quaerat dolorem ducimus
+      corrupti omnis quibusdam provident natus suscipit atque quod aperiam.
+      Assumenda non, quam exercitationem quidem nostrum fugit ea odio est eos
+      aut fuga aliquam accusamus, eius excepturi beatae! Quo, harum itaque?
+      Doloribus maxime voluptate ab dignissimos itaque veniam officiis delectus,
+      sit est labore asperiores quo eius modi quidem praesentium, velit
+      assumenda error perferendis laborum dolores distinctio aliquid! Neque. Hic
+      deserunt error tempora. Quisquam labore iure distinctio recusandae
+      tempora, delectus animi possimus at voluptatum quibusdam adipisci impedit
+      laudantium! Dolor vel natus esse eius neque, voluptatum sint
+      reprehenderit. Voluptatem, est! Iusto ducimus necessitatibus quod sint
+      quibusdam nemo amet minima adipisci, itaque consequuntur similique quia
+      tempore corrupti numquam, aut minus eum iure vero? In cum ducimus
+      explicabo fuga. Porro, nulla laudantium? Sed perspiciatis obcaecati vitae
+      provident enim laboriosam exercitationem, minima, quis alias perferendis
+      veniam libero molestias debitis quos ipsum natus assumenda! Omnis voluptas
+      architecto culpa sequi consequatur ipsa id et quod. Excepturi, fugiat
+      exercitationem. Eveniet quibusdam aspernatur illum eaque quam ad
+      temporibus voluptatum ipsa quidem, dolores ipsam, repudiandae beatae est
+      suscipit, blanditiis vitae ab harum veritatis in aut? Dicta, ea? Fugiat.
+      Adipisci consectetur non dolores nostrum, placeat aliquam tenetur libero
+      ipsum fugiat sit, iure hic eos beatae, officiis dolore quas. Laboriosam
+      ipsum perspiciatis id tempora corrupti eveniet iure quos inventore
+      doloribus! In nostrum soluta veniam tempore rerum doloribus itaque quae
+      quos error, nisi fugit eum obcaecati. Doloribus sit amet dignissimos eos
+      possimus vero, magnam iure animi nostrum nisi voluptates deleniti
+      consequatur! Ipsum praesentium incidunt sint animi ea. Alias dicta
+      repellat deserunt consectetur modi tempora, delectus a iste sequi nisi hic
+      magnam odit error culpa esse, atque eaque laborum aliquam officiis quam.
+      Nisi reiciendis saepe tempora vitae ea eveniet, doloribus iste ullam a
+      voluptate commodi expedita, reprehenderit corporis eaque repellendus,
+      deleniti nesciunt minus. Reiciendis unde temporibus nam reprehenderit,
+      accusamus minima tempora facilis. Et ipsum beatae non laboriosam
+      consectetur earum, tempore illo cum aliquid obcaecati libero iste sequi
+      eum dolor modi ducimus aspernatur necessitatibus! Ipsum obcaecati atque
+      laborum? Dicta atque eos mollitia facilis! Suscipit, magnam dicta
+      voluptatem harum itaque atque, consequuntur reprehenderit culpa ab iusto
+      ex recusandae qui. Repudiandae accusamus ducimus quaerat unde, quidem eos
+      minus temporibus tempora amet quisquam, totam veritatis corrupti. Minus
+      quo non sed nobis enim neque natus magni modi placeat. Itaque eveniet
+      voluptates excepturi commodi eum quisquam architecto, pariatur impedit
+      placeat consequatur repellendus veniam perspiciatis minus ratione delectus
+      obcaecati? Provident est odit expedita libero ad perferendis repellendus
+      aspernatur quae, aut in, autem facere minima fugiat. Quia, maxime.
+      Voluptas porro ex repudiandae iste dignissimos vitae ipsam eligendi enim
+      saepe dolorem! Dolorem quae, quos excepturi voluptatem aut alias magnam
+      autem perferendis quod. Quod, nesciunt quia, veniam ducimus, provident
+      magnam beatae sequi voluptas harum ab officiis accusantium modi quos
+      soluta iure! Laboriosam. At similique expedita rem veritatis perspiciatis
+      nisi! Error illum, animi reiciendis officia fugiat sed veritatis,
+      perferendis quam, quia velit atque nesciunt beatae ut alias voluptatum cum
+      laudantium incidunt doloribus reprehenderit?
+    </div>
+    <script>
+      const heroGirl = document.querySelector("#hero-girl");
+      const heroMan = document.querySelector("#hero-man");
+      const mashkraftlogoImg = document.querySelector("#mashkraft-logo img");
+
+      setInterval(() => {
+        heroGirl.classList.toggle("hero-human-show");
+        heroMan.classList.toggle("hero-human-show");
+      }, 6000);
+    </script>
+    <script>
+      // navbar sciprt
+      const navbar = document.querySelector("#navbar");
+      const navbarContactUs = document.querySelector("#navbar-contact-us");
+      document.addEventListener("scroll", (event) => {
+        if (window.scrollY >= 80) {
+          console.log(" if (window.scrollY >= 100) {");
+          navbar.classList.remove("absolute");
+          navbar.classList.add("-top-24");
+          navbar.classList.add("fixed");
+          navbar.classList.remove("navbar");
+          navbarContactUs.classList.remove("navbar-contact-us");
+          mashkraftlogoImg.setAttribute(
+            "src",
+            "/assets/mashkraft-logo-colored2.svg"
+          );
+
+          if (window.scrollY >= 90) {
+            navbar.classList.add("navbarAnimationRule");
+          }
+        } else {
+          navbar.classList.add("absolute");
+          navbar.classList.remove("fixed");
+          navbar.classList.remove("-top-24");
+          navbar.classList.add("navbar");
+          navbarContactUs.classList.add("navbar-contact-us");
+          navbar.classList.remove("navbarAnimationRule");
+
+          mashkraftlogoImg.setAttribute(
+            "src",
+            "/assets/mashkraft-logo-white.svg"
+          );
+        }
+      });
+
+      // navbar menu script
+      [].slice
+        .call(document.querySelectorAll(".dropdown .nav-link"))
+        .forEach(function (el) {
+          el.addEventListener("click", onClick, false);
+        });
+
+      function onClick(e) {
+        e.preventDefault();
+        var el = this.parentNode;
+        el.classList.contains("show-submenu")
+          ? hideSubMenu(el)
+          : showSubMenu(el);
+      }
+
+      function showSubMenu(el) {
+        el.classList.add("show-submenu");
+        document.addEventListener("click", function onDocClick(e) {
+          e.preventDefault();
+          if (el.contains(e.target)) {
+            return;
+          }
+          document.removeEventListener("click", onDocClick);
+          hideSubMenu(el);
+        });
+      }
+
+      function hideSubMenu(el) {
+        el.classList.remove("show-submenu");
+      }
+    </script>
+  </body>
+</html>

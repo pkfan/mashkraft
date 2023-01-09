@@ -1,0 +1,18 @@
+{
+  "name": "mashkraft-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:style": "npx tailwindcss -i ./src/style.css -o ./dist/style.css --watch ",
+    "build:style": "npx tailwindcss -i ./src/style.css -o ./dist/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4",
+    "tailwindcss-debug-screens": "^2.2.1"
+  }
+}
